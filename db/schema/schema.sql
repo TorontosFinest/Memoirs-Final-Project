@@ -1,0 +1,39 @@
+DROP TABLE IF EXISTS users CASCADE;
+
+/* Users Table*/
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
+DROP TABLE IF EXISTS memoirs CASCADE;
+
+/* Memmoirs Table*/
+CREATE TABLE memoirs (
+  id SERIAL PRIMARY KEY NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW(),
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS images CASCADE;
+
+/* Images Table*/
+CREATE TABLE images (
+  id SERIAL PRIMARY KEY NOT NULL,
+  imgurl VARCHAR(255) NOT NULL
+  
+);
+
+DROP TABLE IF EXISTS memoir_images CASCADE;
+
+/* Memoir Images Table*/
+CREATE TABLE memoir_images (
+  id SERIAL PRIMARY KEY NOT NULL,
+  img_id INTEGER REFERENCES images(id) ON DELETE CASCADE,
+  memoir_id INTEGER REFERENCES memoirs(id) ON DELETE CASCADE
+);
+
