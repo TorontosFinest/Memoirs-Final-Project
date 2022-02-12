@@ -1,9 +1,10 @@
 const express = require("express");
 const cors = require("cors");
-const pool = require("./db/db");
+const client = require("./db/db");
 const app = express();
 const PORT = 8080 || 5000;
 const cookieSession = require("cookie-session");
+const bodyParser = require("body-parser");
 
 require("dotenv").config();
 
@@ -15,18 +16,23 @@ app.use(
     keys: ["key1,", "key2"],
   })
 );
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   console.log("just get");
 });
 
-app.post("/", async (req, res) => {
+app.get("/login", (req, res) => {});
+
+app.post("/register", async (req, res) => {
   try {
-    const register = await pool.query(
+    console.log("REQBODY", req.body);
+    const register = await client.query(
       `
       INSERT INTO users (name,email,password)
 VALUES ($1, $2, $3) RETURNING *;`,
-      [req.body.fullname, req.body.email, req.body.password]
+      [req.body.name, req.body.email, req.body.password]
     );
     res.json(register);
   } catch (error) {
