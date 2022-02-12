@@ -9,7 +9,7 @@ export default function Form() {
         Log-in
       </h1>
       <div className="space-x-10 ml-auto mr-20 mt-16">
-        <button className="transition ease-in-out delay-150 bg-white hover:-translate-y-0 hover:scale-110 hover:bg-indigo-500 duration-300 hover:text-white font-bold py-2 px-4 rounded-lg inline-flex items-center w-60 space-x-6 shadow-2xl shadow-cyan-500/50">
+        <button className="transition ease-in-out delay-150 bg-white hover:-translate-y-0 hover:scale-110 hover:bg-indigo-500 duration-300 bg-white hover:bg-gray-400 hover:text-white font-bold py-2 px-4 rounded-lg inline-flex items-center w-60 space-x-6 shadow-2xl shadow-lg shadow-cyan-500/50">
           <img
             className="w-10 h-10 bg-white rounded-lg"
             src={facebook}
@@ -17,7 +17,7 @@ export default function Form() {
           />
           <span className="font-Poppins font-normal">With Facebook</span>
         </button>
-        <button className="transition ease-in-out delay-150 hover:-translate-y-0 hover:scale-110 duration-300 bg-white hover:bg-gray-400 hover:text-white font-bold py-2 px-4 rounded-lg inline-flex items-center w-60 space-x-6 shadow-2xl shadow-cyan-500/50">
+        <button className="transition ease-in-out delay-150 bg-white hover:-translate-y-0 hover:scale-110 hover:bg-indigo-500 duration-300 bg-white hover:bg-gray-400 hover:text-white font-bold py-2 px-4 rounded-lg inline-flex items-center w-60 space-x-6 shadow-2xl shadow-lg shadow-cyan-500/50">
           <img
             className="w-10 h-10  rounded-sm"
             src={google}
@@ -48,7 +48,7 @@ export default function Form() {
           type="password"
           placeholder="Password"
         />
-        <button className="transition ease-in-out delay-150 bg-white hover:-translate-y-0 hover:scale-110 hover:bg-indigo-500 duration-300  font-bold py-2 px-4 rounded-lg  items-center w-60 space-x-2.5 shadow-2xl shadow-cyan-500/50 mt-6 hover:text-white">
+        <button className="transition ease-in-out delay-150 bg-white hover:-translate-y-0 hover:scale-110 hover:bg-indigo-500 duration-300  font-bold py-2 px-4 rounded-lg  items-center w-60 space-x-2.5 shadow-2xl shadow-lg shadow-cyan-500/50 mt-6 hover:text-white">
           <span className="text-center font-Poppins font-normal ">
             Register
           </span>

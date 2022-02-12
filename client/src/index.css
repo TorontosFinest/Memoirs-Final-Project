@@ -1,11 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.body {
-  @apply bg-[url(assets/backgroundMain.png)];
-}
-
-.lessThan-sm-screens {
-  @apply bg-cover bg-right w-screen h-screen sm:bg-center;
-}
