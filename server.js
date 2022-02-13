@@ -39,6 +39,46 @@ VALUES ($1, $2, $3) RETURNING *;`,
   }
 });
 
+app.get("/home", (req, res) => {
+  res.send("OK");
+});
+
+app.post("/login", async (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  try {
+    const user = await login(email, password);
+    console.log("authenticate", user);
+    res.send(user);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`The server is up and running and is listening on port:${PORT}`);
 });
+
+// hepler functions below
+const login = function (email, password) {
+  return getUserWithEmail(email).then((user) => {
+    console.log("USER IS ", user);
+    if (password === user.password) {
+      console.log("USER IS", user);
+      return user;
+    }
+    return null;
+  });
+};
+
+const getUserWithEmail = function (email) {
+  return client
+    .query("SELECT * FROM users WHERE email = $1", [email])
+    .then((result) => {
+      console.log("RESULT", result.rows[0]);
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
