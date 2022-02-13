@@ -5,6 +5,7 @@ const app = express();
 const PORT = 8080 || 5000;
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
+const memoriesRoutes = require("./Routes/memories");
 
 require("dotenv").config();
 
@@ -16,6 +17,8 @@ app.use(
     keys: ["key1,", "key2"],
   })
 );
+
+app.use(memoriesRoutes);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
