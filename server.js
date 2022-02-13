@@ -23,8 +23,7 @@ app.get("/", (req, res) => {
   console.log("just get");
 });
 
-app.get("/login", (req, res) => {});
-
+// Register Route
 app.post("/register", async (req, res) => {
   try {
     console.log("REQBODY", req.body);

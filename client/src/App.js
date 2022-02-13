@@ -1,9 +1,10 @@
 import React from "react";
-import Body from "./components/Body/Body";
+
+import RegisterPage from "./components/RegisterPage";
 
 const App = () => (
   <div>
-    <Body />
+    <RegisterPage />
   </div>
 );
 
