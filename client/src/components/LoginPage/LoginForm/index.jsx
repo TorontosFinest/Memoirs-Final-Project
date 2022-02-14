@@ -1,18 +1,22 @@
 import React, { useState} from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 
 export default function LoginForm() {
   // create state to keep track of email and password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   // create a function to handle post request from the client-end
-  const loginform = () => {
+  const loginform = (event) => {
+    event.preventDefault();
     axios
       .post("http://localhost:8080/login", { email, password })
       .then((res) => {
+        const id = res.data.id;
         console.log("This is coming from the axios LoginForm ----->", res);
-        window.location.href="http://localhost:8080/register";
+        navigate(`/${id}`);
+        // window.location.href=`http://localhost:8080/${id}`;
       });
   };
   // jsx
@@ -39,12 +43,10 @@ export default function LoginForm() {
             setPassword(event.target.value);
           }}
         />
-        <div className="flex justify-between items-center text-white text-sm  mt-5 mr-20 space-x-2">
           <p className="text-white 4xl:text-3xl">Dont have an account yet?</p>
           <Link className="text-cyan-500 underline 4xl:text-4xl" to="/register">
             Register
           </Link>
-        </div>
         <div className="flex justify-center items center">
           <button
             type="submit"

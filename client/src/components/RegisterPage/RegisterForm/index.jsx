@@ -20,7 +20,7 @@ export default function RegisterForm() {
   // jsx
   return (
     <div>
-      <form className="flex flex-col justify-center items-center mt-20 gap-y-2 sm:gap-y-4 md:mt-72 lg:mt-10 xl:gap-y-6 2xl:mt-56 2xl:float-right 2xl:mr-20 2xl:gap-y-10 3xl:float-none 3xl:ml-20 3xl:mt-42 3xl:gap-y-3 4xl:gap-y-10 4xl:mt-96 ">
+      <form className="flex flex-col justify-center items-center mt-20 gap-y-2 sm:gap-y-4 md:mt-72 lg:mt-10 xl:gap-y-6 2xl:mt-56 2xl:float-right 2xl:mr-20 2xl:gap-y-10 3xl:float-none 3xl:ml-20 3xl:mt-42 3xl:gap-y-3 4xl:gap-y-10 4xl:mt-96w ">
         <input
           className="rounded-xl border-cyan-400 hover:border-dotted bg-transparent text-white w-50 sm:w-64 md:w-80 xl:w-96 3xl:text-3xl 4xl:text-5xl 4xl:w-3/5 4xl:mt-20 "
           type="text"
