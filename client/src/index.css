@@ -9,3 +9,11 @@
 .lessThan-sm-screens {
   @apply bg-cover bg-right w-screen h-screen sm:bg-center;
 }
+
+.dashboard-bg {
+  @apply bg-[url(assets/dashboard.png)];
+}
+
+.dashboard-bg-css {
+  @apply bg-cover bg-no-repeat w-screen h-screen;
+}
