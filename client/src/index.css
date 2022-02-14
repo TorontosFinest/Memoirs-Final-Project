@@ -17,3 +17,11 @@
 .dashboard-bg-css {
   @apply bg-cover bg-no-repeat w-screen h-screen;
 }
+
+.fuji {
+  @apply bg-[url(assets/Fuji.jpg)];
+}
+
+.fuji-bg-css {
+  @apply bg-cover bg-no-repeat w-full h-40 rounded-sm bg-center;
+}
