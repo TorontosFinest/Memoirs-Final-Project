@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 
 export default function RegisterForm() {
   // create state to keep track of email and password
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   // create a function to handle post request from the client-end
-  const registerfrom = () => {
+  const registerfrom = (event) => {
+    event.preventDefault();
     axios
       .post("http://localhost:8080/register", { name, email, password })
       .then((res) => {
+        const id = res.data.rows[0].id;
         console.log("this is coming from axios ----->", res);
-        res.redirect("login");
+        navigate(`/dashboard/${id}`);
       });
   };
   // jsx

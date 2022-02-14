@@ -16,7 +16,7 @@ render(
       <Route path="/" element={<App />} />
       <Route path="login" element={<LoginRoute />} />
       <Route path="register" element={<RegisterRoute />} />
-      <Route path="dashboard/id" element={<DashboardRoute />} />
+      <Route path="dashboard/:id" element={<DashboardRoute />} />
     </Routes>
   </BrowserRouter>,
   rootElement
