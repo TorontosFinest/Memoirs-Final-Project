@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -12,6 +12,7 @@ export default function LoginForm() {
       .post("http://localhost:8080/login", { email, password })
       .then((res) => {
         console.log("This is coming from the axios LoginForm ----->", res);
+        window.location.href="http://localhost:8080/register";
       });
   };
   // jsx
