@@ -15,8 +15,8 @@ export default function LoginForm() {
       .then((res) => {
         const id = res.data.id;
         console.log("This is coming from the axios LoginForm ----->", res);
-        navigate(`/${id}`);
-        // window.location.href=`http://localhost:8080/${id}`;
+        navigate(`/dashboard/${id}`);
+        // window.location.href=`/dashboard/${id}`;
       });
   };
   // jsx

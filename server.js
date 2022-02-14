@@ -39,7 +39,7 @@ VALUES ($1, $2, $3) RETURNING *;`,
   }
 });
 
-app.get("/:id", (req, res) => {
+app.get("/dashboard/:id", (req, res) => {
   res.send("OK");
 });
 
