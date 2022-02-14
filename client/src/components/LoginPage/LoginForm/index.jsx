@@ -43,10 +43,10 @@ export default function LoginForm() {
             setPassword(event.target.value);
           }}
         />
-          <p className="text-white 4xl:text-3xl">Dont have an account yet?</p>
-          <Link className="text-cyan-500 underline 4xl:text-4xl" to="/register">
-            Register
-          </Link>
+        <p className="text-white 4xl:text-3xl">Dont have an account yet?</p>
+        <Link className="text-cyan-500 underline 4xl:text-4xl" to="/register">
+          Register
+        </Link>
         <div className="flex justify-center items center">
           <button
             type="submit"
