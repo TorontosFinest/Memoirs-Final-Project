@@ -28,13 +28,15 @@ app.get("/", (req, res) => {
 app.post("/register", async (req, res) => {
   try {
     console.log("REQBODY", req.body);
-    const register = await client.query(
+    const user = await client.query(
       `
       INSERT INTO users (name,email,password)
 VALUES ($1, $2, $3) RETURNING *;`,
       [req.body.name, req.body.email, req.body.password]
     );
-    res.json(register);
+    console.log("YOUR USER IS!", user);
+    req.session.user_id = user.rows[0].id;
+    res.json(user);
   } catch (error) {
     console.error(error);
   }
@@ -66,7 +68,7 @@ app.listen(PORT, () => {
 const login = function (email, password) {
   return getUserWithEmail(email).then((user) => {
     console.log("USER IS ", user);
-    if (password === user.password) {
+    if (password === user.password && email === user.email) {
       console.log("USER IS", user);
       return user;
     }
@@ -85,3 +87,44 @@ const getUserWithEmail = function (email) {
       console.log(err.message);
     });
 };
+
+// app.post("/register", (req, res) => {
+//
+//   const addUser = function (user) {
+//     return client
+//       .query(
+//         `INSERT INTO users (name,email,password)
+//    VALUES ($1, $2, $3) RETURNING *;`,
+//         [user["name"], user["email"], user["password"]]
+//       )
+//       .then((result) => {
+//         console.log("RESULT IS", result);
+//         return result.rows[0];
+//       })
+//       .catch((err) => {
+//         console.log(err.message);
+//       });
+//   };
+
+//   const user = req.body;
+//   getUserWithEmail(user.email)
+//     .then((result) => {
+//       if (result) {
+//         return result;
+//       } else {
+//         return null;
+//       }
+//     })
+//     .then((result) => {
+//       if (result) {
+//         res.redirect("/login");
+//       } else {
+//         addUser(user).then((user) => {
+//           if (user) {
+//             req.session.user_id = user.id;
+//           }
+//           res.redirect("/");
+//         });
+//       }
+//     });
+// });
