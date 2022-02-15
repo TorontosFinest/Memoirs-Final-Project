@@ -7,11 +7,12 @@ const getAllMemories = async (req, res) => {
     const recordedIds = {};
     const memoryArr = [];
      response.forEach((res) => {
-        const {name, description, id, image } =res;
+        const {name, description, id, image, user_id } =res;
         if(!recordedIds[id]) {
             recordedIds[id] = true;
             memoryArr.push({
                 id,
+                userId: user_id,
                 name,
                 description,
                 image
