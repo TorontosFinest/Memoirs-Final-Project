@@ -33,6 +33,15 @@ app.get("/logout", (req, res) => {
   res.send("Successfully Logged out");
 });
 
+app.get("/login", (req, res) => {
+  req.session = null;
+  res.send("cleared session");
+});
+app.get("/register", (req, res) => {
+  req.session = null;
+  res.send("cleared session");
+});
+
 app.post("/login", async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;

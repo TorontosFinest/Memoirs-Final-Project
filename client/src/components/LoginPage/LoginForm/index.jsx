@@ -20,6 +20,12 @@ export default function LoginForm() {
         // window.location.href=`/dashboard/${id}`;
       });
   };
+
+     axios
+      .get("/login")
+      .then(() => {
+        console.log("session cleared");
+      });
   // jsx
   return (
     <div>

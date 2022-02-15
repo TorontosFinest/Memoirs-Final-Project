@@ -20,6 +20,12 @@ export default function RegisterForm() {
         navigate(`/dashboard/${id}`);
       });
   };
+
+   axios
+      .get("/register")
+      .then(() => {
+        console.log("session cleared");
+      });
   // jsx
   return (
     <div>
