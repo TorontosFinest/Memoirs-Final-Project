@@ -1,7 +1,23 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
+
 
 export default function MyDropdown() {
+
+  const navigate = useNavigate();
+
+  const logOut = function (event) {
+    event.preventDefault();
+       axios
+      .get("/logout")
+      .then(() => {
+        navigate("/login");
+      });
+      
+  }
+
   return (
     <Menu as="div" className="relative inline-block">
       <div>
@@ -14,9 +30,9 @@ export default function MyDropdown() {
             stroke="currentColor"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
@@ -59,7 +75,7 @@ export default function MyDropdown() {
           <div className="px-1 py-1">
             <Menu.Item>
               {({ active }) => (
-                <button
+                <button onClick={(e) => logOut(e)}
                   className={`${
                     active ? "bg-violet-500 text-white" : "text-white"
                   } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
