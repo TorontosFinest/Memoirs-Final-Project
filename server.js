@@ -46,6 +46,11 @@ app.get("/dashboard/:id", (req, res) => {
   res.send("OK");
 });
 
+app.get("/logout", (req, res) => {
+  req.session = null;
+  res.send("Successfully Logged out");
+});
+
 app.post("/login", async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
