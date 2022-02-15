@@ -13,7 +13,8 @@ app.use(express.json());
 app.use(
   cookieSession({
     name: "SESH",
-    keys: ["key1,", "key2"],
+    keys: ["key1"],
+    maxAge: 24 * 60 * 60 * 1000,
   })
 );
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -49,7 +50,9 @@ app.post("/login", async (req, res) => {
   try {
     const user = await login(email, password);
     console.log("authenticate", user);
-    res.send(user);
+    req.session.user_id = user.id;
+    console.log("SESSSION", req.session);
+    res.json(user);
   } catch (error) {
     console.error(error);
   }

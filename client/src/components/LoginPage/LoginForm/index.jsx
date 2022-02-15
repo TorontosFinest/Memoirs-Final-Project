@@ -11,11 +11,12 @@ export default function LoginForm() {
   const loginform = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:8080/login", { email, password })
+      .post("/login", { email, password })
       .then((res) => {
-        const id = res.data.id;
+        const user = res.data;
         console.log("This is coming from the axios LoginForm ----->", res);
-        navigate(`/dashboard/${id}`);
+        // localStorage.setItem("User id is:",user.id);
+        navigate(`/dashboard/${user.id}`);
         // window.location.href=`/dashboard/${id}`;
       });
   };

@@ -13,7 +13,7 @@ export default function RegisterForm() {
   const registerfrom = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:8080/register", { name, email, password })
+      .post("/register", { name, email, password })
       .then((res) => {
         const id = res.data.rows[0].id;
         console.log("this is coming from axios ----->", res);
