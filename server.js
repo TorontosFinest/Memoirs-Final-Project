@@ -24,24 +24,6 @@ app.get("/", (req, res) => {
   console.log("just get");
 });
 
-// Register Route
-app.post("/register", async (req, res) => {
-  try {
-    console.log("REQBODY", req.body);
-    const user = await client.query(
-      `
-      INSERT INTO users (name,email,password)
-VALUES ($1, $2, $3) RETURNING *;`,
-      [req.body.name, req.body.email, req.body.password]
-    );
-    console.log("YOUR USER IS!", user);
-    req.session.user_id = user.rows[0].id;
-    res.json(user);
-  } catch (error) {
-    console.error(error);
-  }
-});
-
 app.get("/dashboard/:id", (req, res) => {
   res.send("OK");
 });
@@ -63,6 +45,37 @@ app.post("/login", async (req, res) => {
   } catch (error) {
     console.error(error);
   }
+});
+app.post("/register", (req, res) => {
+  const addUser = function (user) {
+    return client
+      .query(
+        `INSERT INTO users (name,email,password)
+   VALUES ($1, $2, $3) RETURNING *;`,
+        [user["name"], user["email"], user["password"]]
+      )
+      .then((result) => {
+        console.log("RESULT IS", result);
+        return result.rows[0];
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  const user = req.body;
+  getUserWithEmail(user.email).then((result) => {
+    if (result) {
+      res.json("There is already a user with this email");
+    } else {
+      addUser(user).then((user) => {
+        if (user) {
+          req.session.user_id = user.id;
+        }
+        res.json(user);
+      });
+    }
+  });
 });
 
 app.listen(PORT, () => {
@@ -93,43 +106,22 @@ const getUserWithEmail = function (email) {
     });
 };
 
-// app.post("/register", (req, res) => {
-//
-//   const addUser = function (user) {
-//     return client
-//       .query(
-//         `INSERT INTO users (name,email,password)
-//    VALUES ($1, $2, $3) RETURNING *;`,
-//         [user["name"], user["email"], user["password"]]
-//       )
-//       .then((result) => {
-//         console.log("RESULT IS", result);
-//         return result.rows[0];
-//       })
-//       .catch((err) => {
-//         console.log(err.message);
-//       });
-//   };
-
-//   const user = req.body;
-//   getUserWithEmail(user.email)
-//     .then((result) => {
-//       if (result) {
-//         return result;
-//       } else {
-//         return null;
-//       }
-//     })
-//     .then((result) => {
-//       if (result) {
-//         res.redirect("/login");
-//       } else {
-//         addUser(user).then((user) => {
-//           if (user) {
-//             req.session.user_id = user.id;
-//           }
-//           res.redirect("/");
-//         });
-//       }
-//     });
+// Register Route
+// app.post("/register", async (req, res) => {
+//   try {
+//     if (!getUserWithEmail(req.body.email)) {
+//       console.log("REQBODY", req.body);
+//       const user = await client.query(
+//         `
+//       INSERT INTO users (name,email,password)
+// VALUES ($1, $2, $3) RETURNING *;`,
+//         [req.body.name, req.body.email, req.body.password]
+//       );
+//       console.log("YOUR USER IS!", user);
+//       req.session.user_id = user.rows[0].id;
+//       res.json(user);
+//     }
+//   } catch (error) {
+//     console.error(error);
+//   }
 // });

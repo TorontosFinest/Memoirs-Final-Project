@@ -15,7 +15,7 @@ export default function RegisterForm() {
     axios
       .post("/register", { name, email, password })
       .then((res) => {
-        const id = res.data.rows[0].id;
+        const id = res.data.id;
         console.log("this is coming from axios ----->", res);
         navigate(`/dashboard/${id}`);
       });
