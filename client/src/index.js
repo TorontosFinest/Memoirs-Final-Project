@@ -6,6 +6,7 @@ import "./index.css";
 import App from "./App";
 import LoginRoute from "./routes/LoginRoute";
 import RegisterRoute from "./routes/RegisterRoute";
+import CreateMemoirRoute from "./routes/CreateMemoirRoute";
 // this is the dashboard Route
 import DashboardRoute from "./routes/DashboardRoute";
 import CreatePage from "./components/CreateMemoirRoute";

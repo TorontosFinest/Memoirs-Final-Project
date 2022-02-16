@@ -1,10 +1,6 @@
 import React from "react";
-import CreatePage from "../components/CreateMemmoirPage";
+import CreateMemoirPage from "../components/CreateMemoirPage";
 
 export default function CreateMemoirRoute() {
-  return (
-    <div>
-      <CreatePage />
-    </div>
-  );
+  return <CreateMemoirPage />;
 }
