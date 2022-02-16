@@ -25,7 +25,15 @@ app.get("/", (req, res) => {
 });
 
 app.get("/dashboard/:id", (req, res) => {
-  res.send("OK");
+  if (!req.session.user_id) {
+    res.json("You must be logged in to view dashboard");
+  } else {
+    client
+      .query(`SELECT * FROM memoirs WHERE user_id = $1`, [req.session.user_id])
+      .then((result) => {
+        res.send(result);
+      });
+  }
 });
 
 app.get("/logout", (req, res) => {
@@ -55,6 +63,27 @@ app.post("/login", async (req, res) => {
     console.error(error);
   }
 });
+
+app.post("/create/:id", (req, res) => {
+  const title = req.body.title;
+  const description = req.body.description;
+  const userID = req.session.user_id;
+  return client
+    .query(
+      `INSERT INTO memoirs (title,description,user_id)
+   VALUES ($1, $2, $3) RETURNING *;`,
+      [title, description, userID]
+    )
+    .then((result) => {
+      console.log("RESULT IS", result);
+      res.send(result.rows[0]);
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
+
 app.post("/register", (req, res) => {
   const addUser = function (user) {
     return client
