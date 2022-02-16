@@ -8,7 +8,7 @@ import LoginRoute from "./routes/LoginRoute";
 import RegisterRoute from "./routes/RegisterRoute";
 // this is the dashboard Route
 import DashboardRoute from "./routes/DashboardRoute";
-import CreatePage from "./components/CreatePage";
+import CreatePage from "./components/CreateMemoirRoute";
 
 const rootElement = document.getElementById("root");
 render(
@@ -17,8 +17,8 @@ render(
       <Route path="/" element={<App />} />
       <Route path="login" element={<LoginRoute />} />
       <Route path="register" element={<RegisterRoute />} />
-      <Route path="dashboard/id" element={<DashboardRoute />} />
-      <Route path="create/id" element={<CreatePage />} />
+      <Route path="dashboard/:id" element={<DashboardRoute />} />
+      <Route path="create" element={<CreateMemoirRoute />} />
     </Routes>
   </BrowserRouter>,
   rootElement
