@@ -8,6 +8,7 @@ import LoginRoute from "./routes/LoginRoute";
 import RegisterRoute from "./routes/RegisterRoute";
 // this is the dashboard Route
 import DashboardRoute from "./routes/DashboardRoute";
+import CreatePage from "./components/CreatePage";
 
 const rootElement = document.getElementById("root");
 render(
@@ -17,6 +18,7 @@ render(
       <Route path="login" element={<LoginRoute />} />
       <Route path="register" element={<RegisterRoute />} />
       <Route path="dashboard/id" element={<DashboardRoute />} />
+      <Route path="create/id" element={<CreatePage />} />
     </Routes>
   </BrowserRouter>,
   rootElement

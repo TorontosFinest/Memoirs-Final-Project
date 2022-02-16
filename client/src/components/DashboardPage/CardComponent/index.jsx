@@ -1,22 +1,21 @@
 import React from "react";
 
+const norway = require("../../../assets/Norway.jpg");
+const fuji = require("../../../assets/Fuji.jpg");
+const images = [
+  {
+    id: 1,
+    url: `${norway}`,
+  },
+  {
+    id: 1,
+    url: `${fuji}`,
+  },
+];
+
 export default function CardComponent() {
-  return (
+  return images.map((image) => {
     <div className="container gap-x-2 flex justify-center items-center p-4">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-20 bg-gradient-to-r from-indigo-600 to-fuchsia-600 rounded hover:text-white"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"
-        />
-      </svg>
       <div className="bg-gradient-to-br from-gray-400 to-transparent p-4 bg-opacity-20 backdrop-blur-sm rounded-md ">
         <div className="w-full h-full space-y-2">
           <img className="fuji fuji-bg-css" />
@@ -56,20 +55,6 @@ export default function CardComponent() {
           </div>
         </div>
       </div>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-20 bg-gradient-to-r from-indigo-600 to-fuchsia-600 rounded hover:text-white"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
-    </div>
-  );
+    </div>;
+  });
 }
