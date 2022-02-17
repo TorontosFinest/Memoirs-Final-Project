@@ -18,6 +18,11 @@ export default function CreateMemoir(){
         })
     }
 
+    const cancel = function(e){
+      e.preventDefault();
+      navigate(`/dashboard/${user_session}`);
+    }
+
     return (
         <div>
       <form className="flex flex-col justify-center items-center mt-20 gap-y-2 sm:gap-y-4 md:mt-72 lg:mt-10 xl:gap-y-6 2xl:mt-56 2xl:float-right 2xl:mr-20 2xl:gap-y-10 3xl:float-none 3xl:ml-20 3xl:mt-42 3xl:gap-y-3 4xl:gap-y-10 4xl:mt-96 ">
@@ -50,7 +55,7 @@ export default function CreateMemoir(){
           >
             Create Memoir
           </button>
-           <button
+           <button onClick={cancel}
             className="transition ease-in-out delay-150  bg-rose-500 hover:-translate-y-0 hover:scale-110 hover:bg-indigo-500 duration-300 hover:text-white font-bold p-1 rounded-lg  text-center items-center w-32 space-x-6 shadow-xl shadow-cyan-500/50 sm:w-44 xl:w-56 3xl:text-4xl 4xl:text-5xl 4xl:p-2"
           >
             Cancel
