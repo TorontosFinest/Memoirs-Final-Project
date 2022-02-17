@@ -24,6 +24,7 @@ export default function LoginForm() {
      axios
       .get("/login")
       .then(() => {
+        localStorage.clear();
         console.log("session cleared");
       });
   // jsx
