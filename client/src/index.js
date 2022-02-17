@@ -18,7 +18,7 @@ render(
       <Route path="login" element={<LoginRoute />} />
       <Route path="register" element={<RegisterRoute />} />
       <Route path="dashboard/:id" element={<DashboardRoute />} />
-      <Route path="create" element={<CreateMemoirRoute />} />
+      <Route path="create/:id" element={<CreateMemoirRoute />} />
     </Routes>
   </BrowserRouter>,
   rootElement
