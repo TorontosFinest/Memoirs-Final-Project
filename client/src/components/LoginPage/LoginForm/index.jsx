@@ -15,7 +15,7 @@ export default function LoginForm() {
       .then((res) => {
         const user = res.data;
         console.log("This is coming from the axios LoginForm ----->", res);
-        // localStorage.setItem("User id is:",user.id);
+        localStorage.setItem('user_id',user.id);
         navigate(`/dashboard/${user.id}`);
         // window.location.href=`/dashboard/${id}`;
       });
@@ -24,6 +24,7 @@ export default function LoginForm() {
      axios
       .get("/login")
       .then(() => {
+        localStorage.clear();
         console.log("session cleared");
       });
   // jsx

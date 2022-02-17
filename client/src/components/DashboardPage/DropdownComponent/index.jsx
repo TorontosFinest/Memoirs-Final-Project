@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 
 
 export default function MyDropdown() {
+        const user_session = localStorage.getItem('user_id');
 
   const navigate = useNavigate();
 
@@ -13,9 +14,15 @@ export default function MyDropdown() {
        axios
       .get("/logout")
       .then(() => {
+        localStorage.clear();
         navigate("/login");
       });
       
+  }
+
+  const create = function(event){
+    event.preventDefault();
+    navigate(`/create/${user_session}`);
   }
 
   return (
@@ -51,7 +58,7 @@ export default function MyDropdown() {
           <div className="px-1 py-1 ">
             <Menu.Item>
               {({ active }) => (
-                <button
+                <button onClick={create}
                   className={`${
                     active ? "bg-violet-500 text-white" : "text-white"
                   } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
