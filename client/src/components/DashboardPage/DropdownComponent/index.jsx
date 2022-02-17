@@ -1,29 +1,25 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 export default function MyDropdown() {
-        const user_session = localStorage.getItem('user_id');
+  const user_session = localStorage.getItem("user_id");
 
   const navigate = useNavigate();
 
   const logOut = function (event) {
     event.preventDefault();
-       axios
-      .get("/logout")
-      .then(() => {
-        localStorage.clear();
-        navigate("/login");
-      });
-      
-  }
+    axios.get("/logout").then(() => {
+      localStorage.clear();
+      navigate("/login");
+    });
+  };
 
-  const create = function(event){
+  const create = function (event) {
     event.preventDefault();
     navigate(`/create/${user_session}`);
-  }
+  };
 
   return (
     <Menu as="div" className="relative inline-block">
@@ -54,11 +50,12 @@ export default function MyDropdown() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 w-64 mt-2 origin-top-center bg-gradient-to-r from-gray-900 to-transparent bg-opacity-20 z-10 backdrop-blur-sm divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 w-64 sm:w-80 mt-2 origin-top-center bg-gradient-to-r from-gray-900 to-transparent bg-opacity-20 z-10 backdrop-blur-sm divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="px-1 py-1 ">
             <Menu.Item>
               {({ active }) => (
-                <button onClick={create}
+                <button
+                  onClick={create}
                   className={`${
                     active ? "bg-violet-500 text-white" : "text-white"
                   } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
@@ -82,7 +79,8 @@ export default function MyDropdown() {
           <div className="px-1 py-1">
             <Menu.Item>
               {({ active }) => (
-                <button onClick={(e) => logOut(e)}
+                <button
+                  onClick={(e) => logOut(e)}
                   className={`${
                     active ? "bg-violet-500 text-white" : "text-white"
                   } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
