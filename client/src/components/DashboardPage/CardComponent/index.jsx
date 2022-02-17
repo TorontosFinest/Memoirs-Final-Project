@@ -1,8 +1,13 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
+
 
 export default function CardComponent(props) {
+  const navigate = useNavigate();
   const { dashboardData } = props;
   console.log("PROPS ARE",props);
+  const user_session = localStorage.getItem('user_id');
+  
   return (
     <>
     {dashboardData.map((data)=>{
@@ -23,7 +28,7 @@ export default function CardComponent(props) {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path
+              <path onClick={()=>navigate(`/edit/${user_session}/${data.id}`)}
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
