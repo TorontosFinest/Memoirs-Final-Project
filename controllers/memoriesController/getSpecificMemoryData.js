@@ -1,25 +1,21 @@
-const {
-  updateMemory,
-  fetchSpecifcMemoryOfUser,
-} = require("../../Models/memoriesQuery");
+const { fetchSpecificMemoryData, fetchSpecifcMemoryOfUser } = require("../../Models/memoriesQuery");
 
-const patchMemory = async (req, res) => {
+const getSpecificMemoryData = async (req, res) => {
   try {
     const { userId, memoryId } = req.params;
-    const { name, description } = req.body;
     const memoryResult = await fetchSpecifcMemoryOfUser(userId, memoryId);
     if (!memoryResult?.length) {
       res
-        .status(403)
+        .status(200)
         .send({ msg: "No memory exist with this Id for given user-Id" });
       return;
     }
-    await updateMemory(name, description, memoryId);
-    res.status(200).send({ msg: "success" });
+    const response = await fetchSpecificMemoryData(memoryId);
+    res.status(200).send(response);
   } catch (e) {
     console.error(e);
     res.status(500).send(e);
   }
 };
 
-module.exports = patchMemory;
+module.exports = getSpecificMemoryData;
