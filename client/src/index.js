@@ -9,7 +9,6 @@ import RegisterRoute from "./routes/RegisterRoute";
 import CreateMemoirRoute from "./routes/CreateMemoirRoute";
 // this is the dashboard Route
 import DashboardRoute from "./routes/DashboardRoute";
-import CreatePage from "./components/CreateMemoirRoute";
 
 const rootElement = document.getElementById("root");
 render(
