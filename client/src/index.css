@@ -2,10 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-.body {
+.background {
   @apply bg-[url(assets/backgroundMain.png)];
 }
 
 .lessThan-sm-screens {
   @apply bg-cover bg-right w-screen h-screen sm:bg-center;
+}
+
+.dashboard-bg {
+  @apply bg-[url(assets/dashboard.png)];
+}
+
+.dashboard-bg-css {
+  @apply bg-cover bg-no-repeat w-screen h-screen;
+}
+
+.fuji {
+  @apply bg-[url(assets/Fuji.jpg)];
+}
+
+.fuji-bg-css {
+  @apply bg-cover bg-no-repeat w-full h-40 rounded-sm bg-center;
 }
