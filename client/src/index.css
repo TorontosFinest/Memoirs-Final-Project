@@ -15,7 +15,7 @@
 }
 
 .dashboard-bg-css {
-  @apply bg-cover bg-no-repeat w-screen h-screen;
+  @apply bg-cover;
 }
 
 .fuji {
@@ -23,5 +23,5 @@
 }
 
 .fuji-bg-css {
-  @apply bg-cover bg-no-repeat w-full h-40 rounded-sm bg-center;
+  @apply bg-cover bg-no-repeat w-screen h-32 rounded-sm bg-center;
 }

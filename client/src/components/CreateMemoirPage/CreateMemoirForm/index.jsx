@@ -1,22 +1,22 @@
-import axios from 'axios';
-import React , {useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function CreateMemoir(){
-    const navigate = useNavigate();
-    const [title,setTitle] = useState("");  
-    const [description,setDescription] = useState("")
-    const user_session = localStorage.getItem('user_id');
+export default function CreateMemoir() {
+  const navigate = useNavigate();
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const user_session = localStorage.getItem("user_id");
 
-    const create = function(e){
-        e.preventDefault();
-        axios
-        .post(`/create/:${user_session}`, {title,description})
-        .then((res)=>{
-            console.log("This is coming from the axios LoginForm ----->", res.data);
-            navigate(`/dashboard/${res.data.user_id}`);
-        })
-    }
+  const create = function (e) {
+    e.preventDefault();
+    axios
+      .post(`/create/:${user_session}`, { title, description })
+      .then((res) => {
+        console.log("This is coming from the axios LoginForm ----->", res.data);
+        navigate(`/dashboard/${res.data.user_id}`);
+      });
+  };
 
     const cancel = function(e){
       navigate(`/dashboard/${user_session}`);
@@ -48,13 +48,15 @@ export default function CreateMemoir(){
           }}
         />
         <div className="flex justify-center items center">
-          <button onClick={create}
+          <button
+            onClick={create}
             type="submit"
             className="transition ease-in-out delay-150  bg-rose-500 hover:-translate-y-0 hover:scale-110 hover:bg-indigo-500 duration-300 hover:text-white font-bold p-1 rounded-lg  text-center items-center w-32 space-x-6 shadow-xl shadow-cyan-500/50 sm:w-44 xl:w-56 3xl:text-4xl 4xl:text-5xl 4xl:p-2"
           >
             Create Memoir
           </button>
            <button onClick={cancel}
+            type="button"
             className="transition ease-in-out delay-150  bg-rose-500 hover:-translate-y-0 hover:scale-110 hover:bg-indigo-500 duration-300 hover:text-white font-bold p-1 rounded-lg  text-center items-center w-32 space-x-6 shadow-xl shadow-cyan-500/50 sm:w-44 xl:w-56 3xl:text-4xl 4xl:text-5xl 4xl:p-2"
           >
             Cancel
@@ -62,5 +64,5 @@ export default function CreateMemoir(){
         </div>
       </form>
     </div>
-    )
+  );
 }
