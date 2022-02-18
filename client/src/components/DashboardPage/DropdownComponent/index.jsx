@@ -24,11 +24,11 @@ export default function MyDropdown() {
  
   return (
     <Menu as="div" className="relative inline-block">
-      <div>
+      <div className="2xl:w-10 2xl:h-10 ">
         <Menu.Button>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-7 mt-3  text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+            className="w-7 2xl:w-12 mt-3 2xl:mt-0  text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -51,7 +51,7 @@ export default function MyDropdown() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 w-64 sm:w-80 mt-2 origin-top-center bg-gradient-to-r from-gray-900 to-transparent bg-opacity-20 z-10 backdrop-blur-sm divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 w-64  sm:w-80 2xl:w-96 mt-2 origin-top-center bg-gradient-to-r from-gray-900 to-transparent bg-opacity-20 z-10 backdrop-blur-sm divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="px-1 py-1 ">
             <Menu.Item>
               {({ active }) => (
@@ -59,7 +59,7 @@ export default function MyDropdown() {
                   onClick={create}
                   className={`${
                     active ? "bg-violet-500 text-white" : "text-white"
-                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                  } group flex rounded-md items-center w-full px-2 py-2 text-sm 2xl:text-2xl`}
                 >
                   Generate a new memoir
                 </button>
@@ -70,7 +70,7 @@ export default function MyDropdown() {
                 <button
                   className={`${
                     active ? "bg-violet-500 text-white" : "text-white"
-                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                  } group flex rounded-md items-center w-full px-2 py-2 text-sm 2xl:text-2xl`}
                 >
                   Logged in as Legend
                 </button>
@@ -84,7 +84,7 @@ export default function MyDropdown() {
                   onClick={(e) => logOut(e)}
                   className={`${
                     active ? "bg-violet-500 text-white" : "text-white"
-                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                  } group flex rounded-md items-center w-full px-2 py-2 text-sm 2xl:text-2xl`}
                 >
                   Log-out
                 </button>
