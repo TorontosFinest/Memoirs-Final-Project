@@ -113,6 +113,19 @@ app.patch("/edit/:userId/:memoirId", (req, res) => {
     });
 });
 
+app.delete("/dashboard/:userId/:memoirId", (req, res) => {
+  console.log(req.body);
+  const memoirId = req.params.memoirId;
+  return client
+    .query("DELETE FROM memoirs WHERE id=$1", [memoirId])
+    .then(() => {
+      res.send("Memoir Deleted");
+    })
+    .catch((err) => {
+      res.send("Erorr while deleting");
+    });
+});
+
 app.post("/register", (req, res) => {
   const addUser = function (user) {
     return client
