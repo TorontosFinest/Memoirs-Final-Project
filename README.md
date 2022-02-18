@@ -59,6 +59,6 @@ Main branch is your production branch, never directly work on it! Workflow
 ## Generate-Memoir-Glassmorphism-page
 <img width="1440" alt="Generate-Logout-Head" src="https://user-images.githubusercontent.com/91354073/154751900-032cbdbf-5bee-4b4d-a598-c46f2633c709.png">
 
-## Resoinsive-Design
+## Responsive-Design
 ![Generate-Memmoir-Respnsive-Upto-2560px](https://user-images.githubusercontent.com/91354073/154751961-0e05fa22-342d-48a6-af7a-d785cc90753b.png)
 
