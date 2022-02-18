@@ -40,7 +40,13 @@ Main branch is your production branch, never directly work on it! Workflow
 ```
 13) git checkout main (or) master (To merge your branch)
 14) git merge feature/my-feature
+
 15) Should not be any conflict since you cleaned them in the branch first
 16) git commit (commit the merge)
 17) git push (So it's not only local)
 ```
+# Screenshots-of-the-project
+
+## login-page
+<img width="1440" alt="Login" src="https://user-images.githubusercontent.com/91354073/154751527-b694e94d-ac7b-44d5-ac67-9a0256bde018.png">
+
