@@ -47,6 +47,18 @@ Main branch is your production branch, never directly work on it! Workflow
 ```
 # Screenshots-of-the-project
 
-## login-page
+## Login-page
 <img width="1440" alt="Login" src="https://user-images.githubusercontent.com/91354073/154751527-b694e94d-ac7b-44d5-ac67-9a0256bde018.png">
+
+## Register-page
+<img width="1440" alt="Register" src="https://user-images.githubusercontent.com/91354073/154751618-7b14ce51-6f58-489e-b0da-c76180e4580e.png">
+
+## Dashboard-GlassMorphism-page
+<img width="1440" alt="Dashboard-Glassmorphism" src="https://user-images.githubusercontent.com/91354073/154751803-6b8a8983-1565-4b2b-a9c8-e2aa937dfd20.png">
+
+## Generate-Memoir-Glassmorphism-page
+<img width="1440" alt="Generate-Logout-Head" src="https://user-images.githubusercontent.com/91354073/154751900-032cbdbf-5bee-4b4d-a598-c46f2633c709.png">
+
+## Resoinsive-Design
+![Generate-Memmoir-Respnsive-Upto-2560px](https://user-images.githubusercontent.com/91354073/154751961-0e05fa22-342d-48a6-af7a-d785cc90753b.png)
 
