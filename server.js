@@ -35,7 +35,9 @@ app.get("/dashboard/:id", (req, res) => {
     res.json("You must be logged in to view dashboard");
   } else {
     client
-      .query(`SELECT * FROM memoirs WHERE user_id = $1`, [req.session.user_id])
+      .query(`SELECT * FROM memoirs WHERE user_id = $1 ORDER BY id`, [
+        req.session.user_id,
+      ])
       .then((result) => {
         res.send(result);
       });
@@ -87,6 +89,40 @@ app.post("/create/:id", (req, res) => {
     })
     .catch((err) => {
       console.log(err.message);
+    });
+});
+
+app.patch("/edit/:userId/:memoirId", (req, res) => {
+  const memoirId = req.params.memoirId;
+  console.log("MEMOIR ID : ", memoirId);
+  const title = req.body.title;
+  const description = req.body.description;
+  return client
+    .query(`UPDATE memoirs SET title=$1, description=$2 WHERE id=$3`, [
+      title,
+      description,
+      memoirId,
+    ])
+    .then((result) => {
+      console.log("EDIT RESULT IS ", result);
+      res.send(result.rows[0]);
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
+
+app.delete("/dashboard/:userId/:memoirId", (req, res) => {
+  console.log(req.body);
+  const memoirId = req.params.memoirId;
+  return client
+    .query("DELETE FROM memoirs WHERE id=$1", [memoirId])
+    .then(() => {
+      res.send("Memoir Deleted");
+    })
+    .catch((err) => {
+      res.send("Erorr while deleting");
     });
 });
 
