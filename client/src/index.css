@@ -10,18 +10,10 @@
   @apply bg-cover bg-right w-screen h-screen sm:bg-center;
 }
 
-.dashboard-bg {
-  @apply bg-[url(assets/dashboard.png)];
+.generateMemoir-bg {
+  @apply bg-[url(assets/generateMemoir.png)];
 }
 
-.dashboard-bg-css {
-  @apply bg-cover;
-}
-
-.fuji {
-  @apply bg-[url(assets/Fuji.jpg)];
-}
-
-.fuji-bg-css {
-  @apply bg-cover bg-no-repeat w-screen h-32 rounded-sm bg-center;
+.generateMemoir-bg-css {
+  @apply bg-cover w-screen h-screen;
 }

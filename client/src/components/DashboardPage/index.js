@@ -3,7 +3,7 @@ import Dashboard from "./Dashboard";
 
 export default function DashboardPage() {
   return (
-    <div className="dashboard-bg dashboard-bg-css 2xl:w-screen 2xl:h-screen">
+    <div className="bg-gradient-to-bl from-black via-violet-900 to-pink-500 ">
       <Dashboard />
     </div>
   );

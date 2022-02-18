@@ -14,10 +14,10 @@ export default function CardComponent(props) {
             key={data.id}
             className=" flex justify-center items-center px-10 py-2 lg:p-3"
           >
-            <div className="bg-gradient-to-br from-gray-400 to-transparent p-0.5 bg-opacity-20 backdrop-blur-sm rounded-md ">
+            <div className="bg-gradient-to-br from-gray-400 to-transparent p-0.5 bg-opacity-20 backdrop-blur-sm shadow-xl rounded-md ">
               <div className="w-full h-50 ">
                 <img
-                  className="fuji-bg-css"
+                  className="rounded-lg"
                   src={
                     "https://media.istockphoto.com/photos/digital-eye-wave-lines-stock-background-stock-video-picture-id1226241649?b=1&k=20&m=1226241649&s=170667a&w=0&h=lXhD5bdn_YT50-ItctUnqB2WiGZ8Jye1GZHjvDsb2Xo="
                   }
