@@ -6,6 +6,12 @@ export default function CardComponent(props) {
   const user_session = localStorage.getItem('user_id');
   const { dashboardData } = props;
   console.log("PROPS ARE", props);
+  const edit = function (e,data){
+    e.preventDefault();
+    localStorage.setItem('memory_id',data.id);
+    const memory_id = localStorage.getItem('memory_id');
+    navigate(`/edit/${user_session}/${memory_id}`);
+  }
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {dashboardData.map((data) => {
@@ -32,7 +38,7 @@ export default function CardComponent(props) {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path onClick={()=>navigate(`/edit/${user_session}/${data.id}`)}
+                    <path onClick={(e)=>{edit(e,data)}}
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
