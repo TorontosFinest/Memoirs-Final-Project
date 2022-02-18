@@ -1,13 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CardComponent(props) {
+  const navigate = useNavigate();
+  const user_session = localStorage.getItem("user_id");
   const { dashboardData } = props;
   console.log("PROPS ARE", props);
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl-grid-col-5 2xl:p-20 2xl:mt-20 mt-10 lg:p-10 lg:mt-0">
       {dashboardData.map((data) => {
         return (
-          <div className=" flex justify-center items-center px-10 py-2 lg:p-3">
+          <div
+            key={data.id}
+            className=" flex justify-center items-center px-10 py-2 lg:p-3"
+          >
             <div className="bg-gradient-to-br from-gray-400 to-transparent p-0.5 bg-opacity-20 backdrop-blur-sm rounded-md ">
               <div className="w-full h-50 ">
                 <img
@@ -30,6 +36,9 @@ export default function CardComponent(props) {
                     stroke="currentColor"
                   >
                     <path
+                      onClick={() =>
+                        navigate(`/edit/${user_session}/${data.id}`)
+                      }
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
