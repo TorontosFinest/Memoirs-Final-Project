@@ -13,7 +13,11 @@ export default function EditMemoir() {
   const create = function (e) {
     e.preventDefault();
     axios
-      .patch(`/edit/${user_session}/${memory_session}`, { title, description, image })
+      .patch(`/edit/${user_session}/${memory_session}`, {
+        title,
+        description,
+        image,
+      })
       .then((res) => {
         console.log(
           "This is EDIT data coming from the axios EDIT form ----->",
@@ -61,10 +65,10 @@ export default function EditMemoir() {
         <MyDropdown />
       </div>
       <div className="flex justify-center items-center">
-        <form className="flex flex-col justify-center items-center gap-y-2 mt-10 sm:gap-y-4 md:mt-40 lg:mt-10 xl:gap-y-6 2xl:mt-56 2xl:float-right 2xl:mr-20 2xl:gap-y-10 3xl:float-none 3xl:ml-20 3xl:mt-42 3xl:gap-y-3 4xl:gap-y-10 4xl:mt-96 ">
+        <form className="flex flex-col justify-center items-center gap-y-2 mt-10 sm:gap-y-4 md:mt-10 lg:mt-10 xl:gap-y-6 2xl:mt-12   2xl:gap-y-4  3xl:mt-28 3xl:gap-y-3 4xl:gap-y-10 4xl:mt-96 ">
           <input
             required
-            className="rounded-xl mt-0 border-cyan-400 hover:border-dotted bg-white text-black w-48  text-sm sm:w-64 md:w-80 lg:w-96 xl:w-96 2xl:text-3xl 2xl:w-3/5  3xl:text-4xl 3xl:w-3/5 4xl:text-5xl 4xl:w-3/5 4xl:mt-20"
+            className="rounded-xl mt-0 border-cyan-400 hover:border-dotted bg-white text-black w-48  text-sm sm:w-64 md:w-80 lg:w-96 xl:w-96 2xl:text-3xl 2xl:w-full  3xl:text-4xl 3xl:w-full 4xl:text-5xl 4xl:w-3/5 4xl:mt-20"
             type="file"
             id="myFile"
             name="filename"
@@ -74,13 +78,13 @@ export default function EditMemoir() {
           />
           <div
             style={{ backgroundImage: `url(${image})` }}
-            className="bg-cover bg-no-repeat w-40 h-20"
+            className="bg-cover bg-center w-40 h-20 md:w-48 md:h-28 lg:w-72 xl:w-80 xl:h-32 2xl:w-full 2xl:h-40 lg:h-28 rounded-xl "
           ></div>
           <input
             required
             className="rounded-xl border-cyan-400 hover:border-dotted bg-transparent text-white w-50 
             sm:w-64 md:w-80 lg:w-96 xl:w-96 2xl:text-3xl
-            2xl:w-3/5 3xl:w-96 3xl:text-4xl 4xl:text-5xl 
+            2xl:w-full 3xl:w-full 3xl:text-4xl 4xl:text-5xl 
             4xl:w-3/5 4xl:mt-20 shadow-2xl"
             type="text"
             name="title"
@@ -92,7 +96,7 @@ export default function EditMemoir() {
           />
           <input
             required
-            className="rounded-xl border-cyan-400 hover:border-dotted bg-transparent text-white w-50 h-20 2xl:h-44 3xl:h-44 sm:w-64 md:w-80 lg:w-96 xl:w-96 2xl:w-3/5 2xl:text-3xl 3xl:text-4xl 3xl:w-full 4xl:text-5xl 4xl:w-3/5 shadow-2xl"
+            className="rounded-xl border-cyan-400 hover:border-dotted bg-transparent text-white w-50 h-20 2xl:h-44 3xl:h-44 sm:w-64 md:w-80 lg:w-96 xl:w-96 2xl:w-full 2xl:text-3xl 3xl:text-4xl 3xl:w-full 4xl:text-5xl 4xl:w-3/5 shadow-2xl"
             type="text"
             name="description"
             placeholder="description"

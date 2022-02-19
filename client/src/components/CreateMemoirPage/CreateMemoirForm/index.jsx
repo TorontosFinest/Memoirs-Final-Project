@@ -12,8 +12,8 @@ export default function CreateMemoir() {
   const create = function (e) {
     e.preventDefault();
     axios
-      .post(`/create/:${user_session}`, {title, description, image})
-      
+      .post(`/create/:${user_session}`, { title, description, image })
+
       .then((res) => {
         console.log("This is coming from the axios LoginForm ----->", res.data);
         navigate(`/dashboard/${user_session}`);
@@ -48,7 +48,7 @@ export default function CreateMemoir() {
 
   return (
     <div>
-      <form className="flex flex-col justify-center items-center gap-y-2 sm:gap-y-4 md:mt-0  xl:gap-y-6 2xl:mt-0 2xl:float-none 2xl:gap-y-4 3xl:float-none 3xl:gap-y-4 3xl:mt-20 4xl:gap-y-10 4xl:mt-96 ">
+      <form className="flex flex-col justify-center items-center gap-y-2 sm:gap-y-4 md:mt-0  xl:gap-y-6 2xl:mt-10  2xl:gap-y-4  3xl:gap-y-4 3xl:mt-10 4xl:gap-y-10 4xl:mt-96 ">
         <input
           required
           className="rounded-xl mt-10 border-cyan-400 hover:border-dotted bg-white text-black w-48  text-sm sm:w-64 md:w-80 lg:w-96 xl:w-96 2xl:text-3xl 2xl:w-3/5  3xl:text-4xl 3xl:w-3/5 4xl:text-5xl 4xl:w-3/5 4xl:mt-20"
@@ -62,7 +62,7 @@ export default function CreateMemoir() {
 
         <div
           style={{ backgroundImage: `url(${image})` }}
-          className="bg-cover bg-no-repeat w-40 h-20"
+          className="bg-cover bg-no-repeat  w-40 h-20 md:w-48 md:h-28 lg:w-72 xl:w-80 xl:h-32 2xl:w-full 2xl:h-40 lg:h-28 rounded-xl "
         ></div>
 
         <input

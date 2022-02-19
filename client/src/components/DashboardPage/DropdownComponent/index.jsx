@@ -24,9 +24,8 @@ export default function MyDropdown() {
   const myMemoirs = function (event) {
     event.preventDefault();
     navigate(`/dashboard/${user_session}`);
-  }
+  };
 
- 
   return (
     <Menu as="div" className="relative inline-block">
       <div className="2xl:w-10 2xl:h-10 ">
@@ -72,7 +71,8 @@ export default function MyDropdown() {
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <button onClick={(e)=> myMemoirs(e)}
+                <button
+                  onClick={(e) => myMemoirs(e)}
                   className={`${
                     active ? "bg-violet-500 text-white" : "text-white"
                   } group flex rounded-md items-center w-full px-2 py-2 text-sm 2xl:text-2xl`}
