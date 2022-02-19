@@ -24,9 +24,7 @@ export default function CardComponent(props) {
               <div className="w-full h-50 ">
                 <img
                   className="rounded-lg"
-                  src={
-                    "https://media.istockphoto.com/photos/digital-eye-wave-lines-stock-background-stock-video-picture-id1226241649?b=1&k=20&m=1226241649&s=170667a&w=0&h=lXhD5bdn_YT50-ItctUnqB2WiGZ8Jye1GZHjvDsb2Xo="
-                  }
+                  src={data.image_url}
                   alt="memoir"
                 />
                 <h1 className="text-2xl text-white font-thin">{data.title}</h1>
@@ -34,6 +32,9 @@ export default function CardComponent(props) {
                   {data.description}
                 </span>
                 <div className="flex justify-between items-center p-2">
+                    <span  onClick={(e) => {
+                        edit(e, data);
+                      }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-20 text-white hover:text-red-500"
@@ -41,16 +42,15 @@ export default function CardComponent(props) {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
+                  
                     <path
-                      onClick={(e) => {
-                        edit(e, data);
-                      }}
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
                       d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
                     />
                   </svg>
+                  </span>
                   <span onClick={(e) => props.removeMemoir(e, data)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

@@ -16,6 +16,7 @@ export default function Dashboard() {
   const load = () => {
     axios.get(`/dashboard/${user_session}`).then((res) => {
       setDashboardData(res.data.rows);
+      console.log("UR DATA IS ",res.data.rows);
     });
   };
 

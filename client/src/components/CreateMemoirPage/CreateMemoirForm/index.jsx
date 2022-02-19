@@ -7,18 +7,41 @@ export default function CreateMemoir() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const user_session = localStorage.getItem("user_id");
+ const [image,setImage] = useState("")
 
   const create = function (e) {
     e.preventDefault();
     axios
-      .post(`/create/:${user_session}`, { title, description })
+      .post(`/create/:${user_session}`, { title: title, description: description, image: image })
       .then((res) => {
         console.log("This is coming from the axios LoginForm ----->", res.data);
-        navigate(`/dashboard/${res.data.user_id}`);
+        navigate(`/dashboard/${user_session}`);
       });
   };
 
-  const cancel = function (e) {
+  const uploadImage = async (e) => {
+      const file=e.target.files[0];
+      const base64 = await convertToBase64(file);
+      console.log(base64);
+      setImage(base64);
+    }
+
+       const convertToBase64=(file)=>{
+      return new Promise((resolve, reject) => {
+        const fileReader= new FileReader();
+        fileReader.readAsDataURL(file);
+
+        fileReader.onload = () => {
+          resolve(fileReader.result);
+        };
+
+        fileReader.onerror = (error)=>{
+          reject(error);
+        };
+      })
+    }
+
+  const cancel = function () {
     navigate(`/dashboard/${user_session}`);
   };
 
@@ -31,11 +54,12 @@ export default function CreateMemoir() {
           type="file"
           id="myFile"
           name="filename"
-          value={title}
-          onChange={(event) => {
-            setTitle(event.target.value);
-          }}
+          onChange={((e)=>{uploadImage(e)})}
+
         />
+        <br></br>
+        <img src={image} height="50px" width="250px"/>
+
         <input
           required
           className="rounded-xl border-cyan-400 hover:border-dotted bg-white text-black w-50 
