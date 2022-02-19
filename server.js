@@ -55,11 +55,33 @@ app.get("/dashboard/:id", (req, res) => {
       [user]
     )
     .then((result) => {
-      console.log(result);
       res.send(result);
     })
     .catch((err) => {
       console.log("ERR", err);
+    });
+});
+
+app.post("/search", (req, res) => {
+  const search = req.body.search;
+  return client
+    .query(
+      `SELECT memoirs.*, images.imgurl AS image_url
+      FROM memoirs
+      RIGHT JOIN memoir_images ON memoirs.id = memoir_id
+      LEFT JOIN images ON images.id = img_id
+      GROUP BY memoirs.id, images.imgurl
+      HAVING description ILIKE $1
+      ORDER BY created_at DESC`,
+      ["%" + search + "%"]
+    )
+    .then((result) => {
+      console.log("RESULT FROM SEARCH IS ", result);
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err.message);
+      res.send(err.message);
     });
 });
 
@@ -82,9 +104,7 @@ app.post("/login", async (req, res) => {
   const password = req.body.password;
   try {
     const user = await login(email, password);
-    console.log("authenticate", user);
     req.session.user_id = user.id;
-    console.log("SESSSION", req.session);
     res.json(user);
   } catch (error) {
     console.error(error);

@@ -1,6 +1,16 @@
 import MyDropdown from "../DropdownComponent";
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const [search,setSearch] = useState("");
+
+  const create = function (e) {
+    e.preventDefault();
+    navigate(`?description=${search}`);
+  };
   return (
     <div className="flex items-center justify-between p-2 w-screen sm:px-4 md:px-6 2xl:px-24">
       <div className="w-screen">
@@ -8,6 +18,16 @@ export default function Navbar() {
           Your Memoirs!
         </h1>
       </div>
+      <div>
+      <input
+      value={search}
+       onChange={(event) => {
+            setSearch(event.target.value);
+          }}
+       className="border-2 border-gray-300 bg-white h-10 pl-2 pr-8 rounded-lg text-sm focus:outline-none"
+       type="search" name="search" placeholder="Search"/> 
+       <button onClick={(event) =>create(event)}type="submit">search</button>
+       </div>
       <MyDropdown />
     </div>
   );
