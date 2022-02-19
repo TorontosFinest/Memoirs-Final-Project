@@ -77,9 +77,11 @@ app.post("/search", (req, res) => {
     )
     .then((result) => {
       console.log("RESULT FROM SEARCH IS ", result);
+      res.send(result);
     })
     .catch((err) => {
       console.log(err.message);
+      res.send(err.message);
     });
 });
 

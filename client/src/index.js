@@ -7,6 +7,7 @@ import App from "./App";
 import LoginRoute from "./routes/LoginRoute";
 import RegisterRoute from "./routes/RegisterRoute";
 import CreateMemoirRoute from "./routes/CreateMemoirRoute";
+import EditMemoirRoute from "./routes/EditMemoirRoute";
 // this is the dashboard Route
 import DashboardRoute from "./routes/DashboardRoute";
 
@@ -19,6 +20,8 @@ render(
       <Route path="register" element={<RegisterRoute />} />
       <Route path="dashboard/:id" element={<DashboardRoute />} />
       <Route path="create/:id" element={<CreateMemoirRoute />} />
+      <Route path="edit/:userId/:memoirId" element={<EditMemoirRoute />} />
+      {/* <Route path="search" element={<DashboardRoute />} /> */}
     </Routes>
   </BrowserRouter>,
   rootElement

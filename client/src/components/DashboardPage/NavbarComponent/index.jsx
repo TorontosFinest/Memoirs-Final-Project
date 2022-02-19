@@ -9,11 +9,7 @@ export default function Navbar() {
 
   const create = function (e) {
     e.preventDefault();
-    axios
-      .post(`/search`, {search})
-      .then(() => {
-        navigate("/login");
-      });
+    navigate(`?description=${search}`);
   };
   return (
     <div className="flex items-center justify-between p-2 w-screen sm:px-4 md:px-6 2xl:px-24">
