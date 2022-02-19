@@ -10,6 +10,7 @@ export default function Dashboard() {
   const user_session = localStorage.getItem("user_id");
   const search = useLocation().search;
   const description = new URLSearchParams(search).get('description');
+  const [displayEditDelete,setDisplayEditDelete] = useState(true);
 
   localStorage.removeItem("memory_id");
 
@@ -22,6 +23,7 @@ export default function Dashboard() {
     if(!description){
     axios.get(`/dashboard/${user_session}`).then((res) => {
       setDashboardData(res.data.rows);
+      setDisplayEditDelete(true);
       console.log("UR DATA IS ",res.data.rows);
     });
   }else{
@@ -30,6 +32,7 @@ export default function Dashboard() {
       .then((res) => {
         console.log("your search response is ", res);
         setDashboardData(res.data.rows);
+        setDisplayEditDelete(false);
       });
   }
   };
@@ -49,6 +52,7 @@ export default function Dashboard() {
       <CardComponent
         removeMemoir={removeMemoir}
         dashboardData={dashboardData}
+        displayEditDelete={displayEditDelete}
       />
     </div>
   );

@@ -21,7 +21,6 @@ render(
       <Route path="dashboard/:id" element={<DashboardRoute />} />
       <Route path="create/:id" element={<CreateMemoirRoute />} />
       <Route path="edit/:userId/:memoirId" element={<EditMemoirRoute />} />
-      {/* <Route path="search" element={<DashboardRoute />} /> */}
     </Routes>
   </BrowserRouter>,
   rootElement

@@ -30,16 +30,6 @@ app.get("/", (req, res) => {
   console.log("just get");
 });
 
-// app.get("/dashboard/:id", (req, res) => {
-//   client
-//     .query(`SELECT * FROM memoirs WHERE user_id = $1 ORDER BY id`, [
-//       req.session.user_id,
-//     ])
-//     .then((result) => {
-//       res.send(result);
-//     });
-// });
-
 app.get("/dashboard/:id", (req, res) => {
   const user = req.session.user_id;
 
@@ -146,24 +136,62 @@ app.post("/create/:id", (req, res) => {
 });
 
 app.patch("/edit/:userId/:memoirId", (req, res) => {
-  const memoirId = req.params.memoirId;
-  console.log("MEMOIR ID : ", memoirId);
-  const title = req.body.title;
-  const description = req.body.description;
-  return client
-    .query(`UPDATE memoirs SET title=$1, description=$2 WHERE id=$3`, [
-      title,
-      description,
-      memoirId,
-    ])
-    .then((result) => {
-      res.send(result.rows[0]);
-      return result.rows[0];
+  const memoir = {
+    title: req.body.title,
+    description: req.body.description,
+    userID: req.session.user_id,
+    imageURL: req.body.image,
+    memoirId: req.params.memoirId,
+  };
+
+  console.log("MEMOIR", memoir);
+
+  const promiseOne = client.query(
+    `UPDATE memoirs SET title=$1, description=$2 WHERE id=$3`,
+    [memoir.title, memoir.description, memoir.memoirId]
+  );
+
+  const promiseTwo = client.query(
+    `SELECT img_id FROM memoir_images WHERE memoir_id=$1`,
+    [memoir.memoirId]
+  );
+
+  return Promise.all([promiseOne, promiseTwo])
+    .then(async (result) => {
+      const image = result[1].rows[0];
+      console.log("image", image);
+      await client.query(`UPDATE images SET imgurl=$1 WHERE id=$2`, [
+        memoir.imageURL,
+        image.img_id,
+      ]);
+      console.log("edit result is", result);
+      res.send(result);
     })
     .catch((err) => {
-      res.send(err.message);
+      console.log("ERROR IS", err);
+      res.send(err.rmessage);
     });
 });
+// app.patch("/edit/:userId/:memoirId", (req, res) => {
+
+//   const memoirId = req.params.memoirId;
+//   console.log("MEMOIR ID : ", memoirId);
+//   const title = req.body.title;
+//   const description = req.body.description;
+//   return client
+//     .query(`UPDATE memoirs SET title=$1, description=$2 WHERE id=$3`, [
+//       title,
+//       description,
+//       memoirId,
+//     ])
+//     .then((result) => {
+//       res.send(result.rows[0]);
+//       return result.rows[0];
+//     })
+//     .catch((err) => {
+//       res.send(err.message);
+//     });
+// });
 
 app.delete("/dashboard/:userId/:memoirId", (req, res) => {
   console.log(req.body);

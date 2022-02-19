@@ -12,11 +12,8 @@ export default function CreateMemoir() {
   const create = function (e) {
     e.preventDefault();
     axios
-      .post(`/create/:${user_session}`, {
-        title: title,
-        description: description,
-        image: image,
-      })
+      .post(`/create/:${user_session}`, {title, description, image})
+      
       .then((res) => {
         console.log("This is coming from the axios LoginForm ----->", res.data);
         navigate(`/dashboard/${user_session}`);

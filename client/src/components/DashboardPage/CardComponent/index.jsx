@@ -31,7 +31,9 @@ export default function CardComponent(props) {
                 <span className="inline-block w-full text-sm text-white font-thin ">
                   {data.description}
                 </span>
+                {props.displayEditDelete? 
                 <div className="flex justify-between items-center p-2">
+                    
                   <span
                     onClick={(e) => {
                       edit(e, data);
@@ -68,7 +70,9 @@ export default function CardComponent(props) {
                       />
                     </svg>
                   </span>
+                      
                 </div>
+                : null}
               </div>
             </div>
           </div>

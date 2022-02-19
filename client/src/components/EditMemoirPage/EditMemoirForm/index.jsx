@@ -13,7 +13,7 @@ export default function EditMemoir() {
   const create = function (e) {
     e.preventDefault();
     axios
-      .patch(`/edit/${user_session}/${memory_session}`, { title, description })
+      .patch(`/edit/${user_session}/${memory_session}`, { title, description, image })
       .then((res) => {
         console.log(
           "This is EDIT data coming from the axios EDIT form ----->",
@@ -95,7 +95,7 @@ export default function EditMemoir() {
             className="rounded-xl border-cyan-400 hover:border-dotted bg-transparent text-white w-50 h-20 2xl:h-44 3xl:h-44 sm:w-64 md:w-80 lg:w-96 xl:w-96 2xl:w-3/5 2xl:text-3xl 3xl:text-4xl 3xl:w-full 4xl:text-5xl 4xl:w-3/5 shadow-2xl"
             type="text"
             name="description"
-            placeholder="desription"
+            placeholder="description"
             value={description}
             onChange={(event) => {
               setDescription(event.target.value);
