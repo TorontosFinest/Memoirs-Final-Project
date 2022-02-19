@@ -9,7 +9,6 @@ export default function Navbar() {
           Your Memoirs!
         </h1>
       </div>
-
       <MyDropdown />
     </div>
   );

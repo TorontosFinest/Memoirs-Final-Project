@@ -62,7 +62,7 @@ export default function CreateMemoir() {
 
         <div
           style={{ backgroundImage: `url(${image})` }}
-          className="bg-cover bg-no-repeat  w-40 h-20 md:w-48 md:h-28 lg:w-72 xl:w-80 xl:h-32 2xl:w-full 2xl:h-40 lg:h-28 rounded-xl "
+          className="bg-cover bg-center bg-no-repeat  w-40 h-20 md:w-48 md:h-28 lg:w-72 xl:w-80 xl:h-32 2xl:w-3/5 2xl:h-44 lg:h-28 rounded-xl "
         ></div>
 
         <input
