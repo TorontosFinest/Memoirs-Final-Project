@@ -54,7 +54,7 @@ export default function CreateMemoir() {
       <form className="flex flex-col justify-center items-center gap-y-2 sm:gap-y-4 md:mt-0  xl:gap-y-6 2xl:mt-0 2xl:float-none 2xl:gap-y-4 3xl:float-none 3xl:gap-y-4 3xl:mt-20 4xl:gap-y-10 4xl:mt-96 ">
         <input
           required
-          className="rounded-xl mt-28 border-cyan-400 hover:border-dotted bg-white text-black w-48  text-sm sm:w-64 md:w-80 lg:w-96 xl:w-96 2xl:text-3xl 2xl:w-3/5  3xl:text-4xl 3xl:w-3/5 4xl:text-5xl 4xl:w-3/5 4xl:mt-20"
+          className="rounded-xl mt-10 border-cyan-400 hover:border-dotted bg-white text-black w-48  text-sm sm:w-64 md:w-80 lg:w-96 xl:w-96 2xl:text-3xl 2xl:w-3/5  3xl:text-4xl 3xl:w-3/5 4xl:text-5xl 4xl:w-3/5 4xl:mt-20"
           type="file"
           id="myFile"
           name="filename"
@@ -62,8 +62,11 @@ export default function CreateMemoir() {
             uploadImage(e);
           }}
         />
-        <br></br>
-        <img src={image} height="50px" width="250px" />
+
+        <div
+          style={{ backgroundImage: `url(${image})` }}
+          className="bg-cover bg-no-repeat w-40 h-20"
+        ></div>
 
         <input
           required

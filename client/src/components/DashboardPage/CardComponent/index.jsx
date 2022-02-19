@@ -23,7 +23,7 @@ export default function CardComponent(props) {
             <div className="bg-gradient-to-br from-gray-400 to-transparent p-0.5 bg-opacity-20 backdrop-blur-sm shadow-xl rounded-md ">
               <div className="w-full h-50 ">
                 <img
-                  className="rounded-lg"
+                  className="rounded-lg w-60 h-32 bg-cover"
                   src={data.image_url}
                   alt="memoir"
                 />
@@ -32,24 +32,25 @@ export default function CardComponent(props) {
                   {data.description}
                 </span>
                 <div className="flex justify-between items-center p-2">
-                    <span  onClick={(e) => {
-                        edit(e, data);
-                      }}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-20 text-white hover:text-red-500"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                  <span
+                    onClick={(e) => {
+                      edit(e, data);
+                    }}
                   >
-                  
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                    />
-                  </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-20 text-white hover:text-red-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                      />
+                    </svg>
                   </span>
                   <span onClick={(e) => props.removeMemoir(e, data)}>
                     <svg
