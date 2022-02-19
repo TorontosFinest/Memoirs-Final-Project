@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS images CASCADE;
 /* Images Table*/
 CREATE TABLE images (
   id SERIAL PRIMARY KEY NOT NULL,
-  imgurl VARCHAR(255) NOT NULL
+  imgurl TEXT NOT NULL
   
 );
 
