@@ -31,10 +31,6 @@ export default function CreateMemoir() {
           type="file"
           id="myFile"
           name="filename"
-          value={title}
-          onChange={(event) => {
-            setTitle(event.target.value);
-          }}
         />
         <input
           required
