@@ -4,7 +4,6 @@ export default function CardComponent(props) {
   const navigate = useNavigate();
   const user_session = localStorage.getItem("user_id");
   const { dashboardData } = props;
-  console.log("PROPS ARE", props);
   const edit = function (e, data) {
     e.preventDefault();
     localStorage.setItem("memory_id", data.id);

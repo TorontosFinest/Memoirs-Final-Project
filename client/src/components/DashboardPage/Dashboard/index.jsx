@@ -25,16 +25,13 @@ export default function Dashboard() {
   }, [description]);
 
   const load = () => {
-    console.log("description is ", description);
     if (!description) {
       axios.get(`/dashboard/${user_session}`).then((res) => {
         setDashboardData(res.data.rows);
         setDisplayEditDelete(true);
-        console.log("UR DATA IS ", res.data.rows);
       });
     } else {
       axios.post(`/search`, { search: description }).then((res) => {
-        console.log("your search response is ", res);
         setDashboardData(res.data.rows);
         setDisplayEditDelete(false);
       });

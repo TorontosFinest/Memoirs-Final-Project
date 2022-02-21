@@ -16,9 +16,7 @@ export default function RegisterForm() {
       .post("/register", { name, email, password })
       .then((res) => {
         const id = res.data.id;
-        console.log("this is coming from axios ----->", res);
       localStorage.setItem('user_id',id);
-
         navigate(`/dashboard/${id}`);
       });
   };

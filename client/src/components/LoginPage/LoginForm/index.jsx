@@ -14,10 +14,8 @@ export default function LoginForm() {
       .post("/login", { email, password })
       .then((res) => {
         const user = res.data;
-        console.log("This is coming from the axios LoginForm ----->", res);
         localStorage.setItem('user_id',user.id);
         navigate(`/dashboard/${user.id}`);
-        // window.location.href=`/dashboard/${id}`;
       });
   };
 
@@ -25,7 +23,6 @@ export default function LoginForm() {
       .get("/login")
       .then(() => {
         localStorage.clear();
-        console.log("session cleared");
       });
   // jsx
   return (

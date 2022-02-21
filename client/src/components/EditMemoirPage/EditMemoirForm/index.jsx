@@ -32,11 +32,7 @@ export default function EditMemoir() {
         description,
         image,
       })
-      .then((res) => {
-        console.log(
-          "This is EDIT data coming from the axios EDIT form ----->",
-          res.data
-        );
+      .then(() => {
         navigate(`/dashboard/${user_session}`);
         localStorage.removeItem("memory_id");
       });
@@ -44,7 +40,6 @@ export default function EditMemoir() {
   const uploadImage = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
-    console.log(base64);
     setImage(base64);
   };
 

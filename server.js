@@ -26,10 +26,6 @@ app.use(
   })
 );
 
-app.get("/", (req, res) => {
-  console.log("just get");
-});
-
 app.get("/dashboard/:id", (req, res) => {
   const user = req.session.user_id;
 
@@ -48,7 +44,7 @@ app.get("/dashboard/:id", (req, res) => {
       res.send(result);
     })
     .catch((err) => {
-      console.log("ERR", err);
+      res.send(err.message);
     });
 });
 
@@ -66,11 +62,9 @@ app.post("/search", (req, res) => {
       ["%" + search + "%"]
     )
     .then((result) => {
-      console.log("RESULT FROM SEARCH IS ", result);
       res.send(result);
     })
     .catch((err) => {
-      console.log(err.message);
       res.send(err.message);
     });
 });
@@ -108,7 +102,6 @@ app.post("/create/:id", (req, res) => {
     userID: req.session.user_id,
     imageURL: req.body.image,
   };
-  // console.log("MEMOIR", memoir);
   const promiseOne = client.query(
     `INSERT INTO memoirs (title,description,user_id)
    VALUES ($1, $2, $3) RETURNING *`,
@@ -130,7 +123,6 @@ app.post("/create/:id", (req, res) => {
       res.send(result);
     })
     .catch((err) => {
-      console.log("ERROR IS", err);
       res.send(err.rmessage);
     });
 });
@@ -143,8 +135,6 @@ app.patch("/edit/:userId/:memoirId", (req, res) => {
     imageURL: req.body.image,
     memoirId: req.params.memoirId,
   };
-
-  console.log("MEMOIR", memoir);
 
   const promiseOne = client.query(
     `UPDATE memoirs SET title=$1, description=$2 WHERE id=$3`,
@@ -159,42 +149,18 @@ app.patch("/edit/:userId/:memoirId", (req, res) => {
   return Promise.all([promiseOne, promiseTwo])
     .then(async (result) => {
       const image = result[1].rows[0];
-      console.log("image", image);
       await client.query(`UPDATE images SET imgurl=$1 WHERE id=$2`, [
         memoir.imageURL,
         image.img_id,
       ]);
-      console.log("edit result is", result);
       res.send(result);
     })
     .catch((err) => {
-      console.log("ERROR IS", err);
       res.send(err.rmessage);
     });
 });
-// app.patch("/edit/:userId/:memoirId", (req, res) => {
-
-//   const memoirId = req.params.memoirId;
-//   console.log("MEMOIR ID : ", memoirId);
-//   const title = req.body.title;
-//   const description = req.body.description;
-//   return client
-//     .query(`UPDATE memoirs SET title=$1, description=$2 WHERE id=$3`, [
-//       title,
-//       description,
-//       memoirId,
-//     ])
-//     .then((result) => {
-//       res.send(result.rows[0]);
-//       return result.rows[0];
-//     })
-//     .catch((err) => {
-//       res.send(err.message);
-//     });
-// });
 
 app.delete("/dashboard/:userId/:memoirId", (req, res) => {
-  console.log(req.body);
   const memoirId = req.params.memoirId;
   return client
     .query("DELETE FROM memoirs WHERE id=$1", [memoirId])
@@ -215,11 +181,10 @@ app.post("/register", (req, res) => {
         [user["name"], user["email"], user["password"]]
       )
       .then((result) => {
-        console.log("RESULT IS", result);
         return result.rows[0];
       })
       .catch((err) => {
-        console.log(err.message);
+        res.send(err.message);
       });
   };
 
@@ -245,9 +210,7 @@ app.listen(PORT, () => {
 // hepler functions below
 const login = function (email, password) {
   return getUserWithEmail(email).then((user) => {
-    console.log("USER IS ", user);
     if (password === user.password && email === user.email) {
-      console.log("USER IS", user);
       return user;
     }
     return null;
@@ -258,52 +221,9 @@ const getUserWithEmail = function (email) {
   return client
     .query("SELECT * FROM users WHERE email = $1", [email])
     .then((result) => {
-      console.log("RESULT", result.rows[0]);
       return result.rows[0];
     })
     .catch((err) => {
-      console.log(err.message);
+      res.send(err.message);
     });
 };
-
-// Register Route
-// app.post("/register", async (req, res) => {
-//   try {
-//     if (!getUserWithEmail(req.body.email)) {
-//       console.log("REQBODY", req.body);
-//       const user = await client.query(
-//         `
-//       INSERT INTO users (name,email,password)
-// VALUES ($1, $2, $3) RETURNING *;`,
-//         [req.body.name, req.body.email, req.body.password]
-//       );
-//       console.log("YOUR USER IS!", user);
-//       req.session.user_id = user.rows[0].id;
-//       res.json(user);
-//     }
-//   } catch (error) {
-//     console.error(error);
-//   }
-// });
-
-// app.post("/create/:id", (req, res) => {
-//   console.log("REQBODY = ", req.body);
-//   const title = req.body.title;
-//   const description = req.body.description;
-//   const userID = req.session.user_id;
-//   const imageURL = req.body.image;
-//   return client
-//     .query(
-//       `INSERT INTO memoirs (title,description,user_id)
-//    VALUES ($1, $2, $3) RETURNING *;`,
-//       [title, description, userID]
-//     )
-//     .then((result) => {
-//       console.log("RESULT IS", result);
-//       res.send(result.rows[0]);
-//       return result.rows[0];
-//     })
-//     .catch((err) => {
-//       console.log(err.message);
-//     });
-// });
