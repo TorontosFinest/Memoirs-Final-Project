@@ -6,7 +6,7 @@ const PORT = 8080 || 5000;
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
 const memoriesRoutes = require("./Routes/memories");
-const bodyParser = require('body-parser');
+
 
 require("dotenv").config();
 
