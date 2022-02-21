@@ -13,9 +13,7 @@ export default function CreateMemoir() {
     e.preventDefault();
     axios
       .post(`/create/:${user_session}`, { title, description, image })
-
-      .then((res) => {
-        console.log("This is coming from the axios LoginForm ----->", res.data);
+      .then(() => {
         navigate(`/dashboard/${user_session}`);
       });
   };
@@ -23,7 +21,6 @@ export default function CreateMemoir() {
   const uploadImage = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
-    console.log(base64);
     setImage(base64);
   };
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MyDropdown from "../../DashboardPage/DropdownComponent";
 
@@ -10,6 +10,20 @@ export default function EditMemoir() {
   const [image, setImage] = useState("");
   const user_session = localStorage.getItem("user_id");
   const memory_session = localStorage.getItem("memory_id");
+
+  useEffect(() => {
+    axios.get(`/dashboard/${user_session}`).then((res) => {
+        if(res.data.rows){
+        for(let i = 0; i < res.data.rows.length; i++){
+          if( res.data.rows[i].id === Number(memory_session)){
+            setTitle(res.data.rows[i].title);
+            setDescription(res.data.rows[i].description);
+            setImage(res.data.rows[i].image_url);
+          }
+        }
+      }
+      });
+  }, []);
   const create = function (e) {
     e.preventDefault();
     axios
