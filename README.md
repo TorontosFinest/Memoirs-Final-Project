@@ -12,13 +12,15 @@ mmemoirs is a full-stack web application built using React, Express, Node, and P
 
 <img width="1440" alt="Register" src="https://user-images.githubusercontent.com/91354073/154751618-7b14ce51-6f58-489e-b0da-c76180e4580e.png">
 
-## Dashboard-GlassMorphism-page
+## Search Memoir
+
+![](https://i.gyazo.com/a26143143994d2a67f7f220f1d2a8ecb.gif)
 
 <img width="1440" alt="Dashboard-Glassmorphism" src="https://user-images.githubusercontent.com/91354073/154751803-6b8a8983-1565-4b2b-a9c8-e2aa937dfd20.png">
 
-## Generate-Memoir-Glassmorphism-page
+## Generate-Memoir
 
-<img width="1440" alt="Generate-Logout-Head" src="https://user-images.githubusercontent.com/91354073/154751900-032cbdbf-5bee-4b4d-a598-c46f2633c709.png">
+![](https://i.gyazo.com/efc495d29576167e908eb5013bee868a.gif)
 
 ## Responsive-Design
 
