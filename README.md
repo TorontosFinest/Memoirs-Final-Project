@@ -1,4 +1,4 @@
-# Mmemoirs-Final-Project
+# Project Description
 
 mmemoirs is a full-stack web application built using React, Express, Node, and PostgreSQL. The purpose of the app is to create a nostalgic memoir space where users can register an account and upload memories from vacations they went on, fun events they've visited, or a birthday party that they want to remember forever. As of right now, users are able to upload a title,description and a gif/image to create a memoir. Users have the ability to delete and edit their memoirs and also search for memoirs created by other users by searching for keywords that are included in other users memoir descriptions.
 
